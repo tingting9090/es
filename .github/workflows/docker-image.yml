@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu - latest
+    steps:
+      - uses: actions/checkout@v4
+      # 拉取 elasticsearch:7.6.1 镜像
+      - name: Pull Elasticsearch image
+        run: docker pull elasticsearch:7.6.1
+      # 原来构建自定义镜像的步骤（如果需要保留）
+      - name: Build the Docker image
+        run: docker build. --file Dockerfile --tag my - image - name:$(date +%s)
+      # 可选：启动 elasticsearch 容器示例，方便做后续测试等
+      - name: Run Elasticsearch container
+        run: |
+          docker run -d --name es - test - p 9200:9200 - p 9300:9300 \
+          - e "discovery.type=single - node" \
+          elasticsearch:7.6.1
