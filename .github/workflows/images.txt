@@ -1,7 +1,2 @@
-mysql:8.0
-redis:5.0
-elasticsearch:7.6.1
-kibana:7.6.1
-nacos/nacos-server:v2.1.0
-apache/rocketmq:4.8.0
 mongo:4.4
+elasticsearch:7.6.1
